@@ -9,6 +9,12 @@ import { CNavItem } from '@coreui/react'
 const _nav = [
     {
         component: CNavItem,
+        name: 'View Chargers',
+        to: '/view-chargers',
+        icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    },
+    {
+        component: CNavItem,
         name: 'Colors',
         to: '/create-user',
         icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
