@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        nic: '',
+        email: '',
         password: ''
     });
     const [loading, setLoading] = useState(false);
@@ -45,13 +45,13 @@ const Login = () => {
 
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formUsername" className="mb-3">
-                        <Form.Label>NIC</Form.Label>
+                        <Form.Label>Email</Form.Label>
                         <Form.Control
                             type="text"
-                            name="nic"
-                            value={formData.nic}
+                            name="email"
+                            value={formData.email}
                             onChange={handleChange}
-                            placeholder="Enter nic"
+                            placeholder="Enter email"
                             required
                         />
                     </Form.Group>
