@@ -8,6 +8,7 @@ const ViewPermissions = React.lazy(() => import('./pages/ViewPermissions'))
 const ViewUsers = React.lazy(() => import('./pages/ViewUsers'))
 const ViewChargers = React.lazy(() => import('./pages/ViewChargers'))
 const ViewSlots = React.lazy(() => import('./pages/ViewSlots'))
+const ViewBookings = React.lazy(() => import('./pages/ViewBookings'))
 
 
 const routes = [
@@ -19,6 +20,7 @@ const routes = [
   { path: '/view-roles', name: 'ViewRole', element: ViewRoles },
   { path: '/view-permissions', name: 'ViewPermissions', element: ViewPermissions },
   { path: '/view-users', name: 'ViewUsers', element: ViewUsers },
+  { path: '/view-bookings', name: 'ViewBookings', element: ViewBookings },
   { path: '/slots/:chargerId', name: 'ViewSlots', element: ViewSlots }
 ]
 

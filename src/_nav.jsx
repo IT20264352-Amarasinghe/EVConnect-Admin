@@ -16,7 +16,7 @@ const _nav = [
     {
         component: CNavItem,
         name: 'View Bookings',
-        to: '/create-user',
+        to: '/view-bookings',
         icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
     },
     {
