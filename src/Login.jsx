@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        username: '',
+        nic: '',
         password: ''
     });
     const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ const Login = () => {
         setLoading(true);
         try {
             const data = await login(formData);
-            localStorage.setItem('token', data.jwt);
+            localStorage.setItem('token', data.token);
             navigate('/dashboard');
         } catch (error) {
             if (error?.status === 403) toast.error("Invalid Credentials");
@@ -45,13 +45,13 @@ const Login = () => {
 
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formUsername" className="mb-3">
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label>NIC</Form.Label>
                         <Form.Control
                             type="text"
-                            name="username"
-                            value={formData.username}
+                            name="nic"
+                            value={formData.nic}
                             onChange={handleChange}
-                            placeholder="Enter username"
+                            placeholder="Enter nic"
                             required
                         />
                     </Form.Group>
