@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Table, Modal, Button, Spinner, Form } from "react-bootstrap";
 import { useParams, useLocation } from "react-router-dom";
 import axiosInstance from "../services/axiosInstance";
+import { getSlotsByCharger, addSlot } from "../services/slotService";
 
 const ViewSlots = () => {
     const { chargerId } = useParams();
@@ -24,8 +25,8 @@ const ViewSlots = () => {
     const fetchSlots = async () => {
         try {
             setLoading(true);
-            const response = await axiosInstance.get(`/api/slots/${chargerId}`);
-            setSlots(response.data);
+            const slotsData = await getSlotsByCharger(chargerId);
+            setSlots(slotsData);
         } catch (error) {
             console.error("Error fetching slots:", error);
         } finally {
@@ -33,37 +34,36 @@ const ViewSlots = () => {
         }
     };
 
-    // 🔹 Add new slot
     const handleAddSlot = async () => {
         try {
-            // Convert date to ISO-like format with time 00:00:00
             const formattedDate = new Date(date);
-            const isoDate = new Date(
-                formattedDate.getFullYear(),
-                formattedDate.getMonth(),
-                formattedDate.getDate()
-            ).toISOString().split("T")[0] + "T00:00:00"; // "2025-09-19T00:00:00"
+            const isoDate =
+                new Date(
+                    formattedDate.getFullYear(),
+                    formattedDate.getMonth(),
+                    formattedDate.getDate()
+                )
+                    .toISOString()
+                    .split("T")[0] + "T00:00:00";
 
-            // Append ":00" to time if not present
             const formatTime = (time) => (time.length === 5 ? time + ":00" : time);
 
             const newSlot = {
-                chargerId: chargerId,
+                chargerId,
                 date: isoDate,
                 startTime: formatTime(startTime),
                 endTime: formatTime(endTime),
                 status: "Available",
             };
 
-            await axiosInstance.post("/api/slots", newSlot);
+            await addSlot(newSlot);
 
             setShowModal(false);
             setDate("");
             setStartTime("");
             setEndTime("");
 
-            // Refresh slots
-            fetchSlots();
+            fetchSlots(); // Refresh slots
         } catch (error) {
             console.error("Error adding slot:", error);
             alert("Failed to add slot");

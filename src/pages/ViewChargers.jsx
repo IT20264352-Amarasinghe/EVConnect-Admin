@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Table, Modal, Button, Spinner, Form } from 'react-bootstrap';
-import { getChargers } from '../services/chargersService';
-import axios from 'axios';
+import { getChargers, addCharger } from '../services/chargersService';
 import { useNavigate } from 'react-router-dom';
 
 const ViewChargers = () => {
@@ -33,12 +32,9 @@ const ViewChargers = () => {
     // 🔹 Add new charger
     const handleAddCharger = async () => {
         try {
-            const newCharger = {
-                code,
-                location,
-            };
+            const newCharger = { code, location };
 
-            await axios.post('http://localhost:5115/api/chargers', newCharger);
+            await addCharger(newCharger);
 
             setShowModal(false);
             setCode('');

@@ -1,16 +1,6 @@
 
 import axiosInstance from './axiosInstance';
 
-export const createUser = async (userData) => {
-    try {
-        const response = await axiosInstance.post('/api/users', userData);
-        return response.data;
-    } catch (error) {
-        console.error('Error creating user:', error);
-        throw error;
-    }
-}
-
 export const getChargers = async () => {
     try {
         const response = await axiosInstance.get('/api/chargers');
@@ -21,12 +11,14 @@ export const getChargers = async () => {
     }
 }
 
-export const deleteUser = async (userId) => {
+// Add a new charger
+export const addCharger = async (charger) => {
     try {
-        const response = await axiosInstance.delete(`/api/users/${userId}`);
+        const response = await axiosInstance.post('/api/chargers', charger);
         return response.data;
     } catch (error) {
-        console.error('Error deleting user:', error);
+        console.error('Error adding charger:', error);
         throw error;
     }
-}
+};
+
