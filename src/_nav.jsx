@@ -22,15 +22,15 @@ const _nav = [
     {
         component: CNavItem,
         name: 'View Users',
-        to: '/theme/typography',
+        to: '/view-users',
         icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
     },
-    {
-        component: CNavItem,
-        name: 'Create Users',
-        to: '/create-user',
-        icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
-    },
+    // {
+    //     component: CNavItem,
+    //     name: 'Create Users',
+    //     to: '/create-user',
+    //     icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    // },
 
 ]
 

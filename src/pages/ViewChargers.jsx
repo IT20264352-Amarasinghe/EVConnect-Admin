@@ -50,7 +50,7 @@ const ViewChargers = () => {
 
     return (
         <div className="container">
-            <h1>Chargers</h1>
+            <h3>Chargers</h3>
 
             <div className="mb-3 text-end">
                 <Button variant="success" onClick={() => setShowModal(true)}>

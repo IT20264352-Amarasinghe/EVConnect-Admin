@@ -26,7 +26,7 @@ const Login = () => {
         try {
             const data = await login(formData);
             localStorage.setItem('token', data.token);
-            navigate('/dashboard');
+            navigate('/view-bookings');
         } catch (error) {
             if (error?.status === 403) toast.error("Invalid Credentials");
             else toast.error("Something went wrong. Please try again.");

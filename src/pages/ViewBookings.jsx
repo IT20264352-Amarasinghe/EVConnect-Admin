@@ -24,7 +24,7 @@ const ViewBookings = () => {
 
     return (
         <div className="container">
-            <h1>Bookings</h1>
+            <h3>Bookings</h3>
             {loading ? (
                 <div className="text-center mt-5">
                     <Spinner animation="border" variant="primary" />
